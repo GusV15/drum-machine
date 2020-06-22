@@ -5,14 +5,14 @@ import styled from 'styled-components';
 const DisplayStyled = styled.div`
     width: 330px;
     height: 270px;
-    margin-left: 15px;
+    margin-left: 20px;
     display:flex;
     flex-flow: row wrap;
     justify-content: center;
     align-content: center;
 `
 
-const Display = ({ data }) => {
+const Display = ({ data, power, text ,setText }) => {
     return (
         <DisplayStyled>
             {data.map(drum => (
@@ -22,6 +22,9 @@ const Display = ({ data }) => {
                     keyTrigger={drum.keyTrigger}
                     id={drum.id}
                     url={drum.url}
+                    power= {power}
+                    text={text}
+                    setText={setText}
                 />
             ))}
         </DisplayStyled>

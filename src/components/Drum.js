@@ -2,10 +2,14 @@ import React, { useRef } from 'react';
 import styled from 'styled-components';
 
 const DrumStyled = styled.div`
-    .drum-pad {
+    .container-drum {
         width: 100px;
         height: 80px;
-        margin: 3px;
+        margin: 4px;
+    }
+    .drum-pad {
+        width: 100%;
+        height: 100%;
         font-size: 1em;
         font-family: 'Russo One', sans-serif;
         font-weight: 400;
@@ -16,43 +20,27 @@ const DrumStyled = styled.div`
         cursor: pointer;
         box-shadow: 3px 3px 3px -1px #1C1C1C, 3px 3px 4px 0.5px #979797, 3px 3px 2px 0.5px #A6A6A6;
     }
-    .drum-pad:active {
+    .container-drum .drum-pad:active {
         background-color: yellow;
-        animation-name: drum;
-        animation-duration: 2s:
+        width: 97%;
+        height: 97%;
     }    
-
-    @keyframes drum {
-        0% {
-            background-color: #808080;
-            width: 100px;
-            height: 80px;
-        }
-        50% {
-            background-color: yellow;
-            width: 10px;
-            height: 75px;
-        }
-        100% {
-            background-color: #808080;
-            width: 100px;
-            height: 80px;
-        }
-    }
 `
 
-const Drum = ({ keyCode, keyTrigger, id, url }) => {
+const Drum = ({ keyCode, keyTrigger, id, url, power, setText }) => {
 
     const drum = useRef(null);
-
     const handleClick = (e) => {
         e.preventDefault();
-        drum.current.play();
+        setText(e.target.id);
+        power ? drum.current.play() : console.log('Drum machime off');
     }
 
     return (
         <DrumStyled>
-            <button id={id} className="drum-pad" onClick={handleClick} >{keyTrigger}</button>
+            <div className="container-drum">
+                <button id={id} className="drum-pad" onClick={handleClick} >{keyTrigger}</button>
+            </div>
             <audio ref={drum} id={keyCode} src={url}></audio>
         </DrumStyled>
     )
