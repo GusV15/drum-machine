@@ -27,13 +27,13 @@ const DrumStyled = styled.div`
     }    
 `
 
-const Drum = ({ keyCode, keyTrigger, id, url, power, setText }) => {
-
+const Drum = ({ keyCode, keyTrigger, id, url, power, setText, volume }) => {
     const drum = useRef(null);
     const handleClick = (e) => {
         e.preventDefault();
         setText(e.target.id);
         power ? drum.current.play() : console.log('Drum machime off');
+        drum.current.volume = volume;
     }
 
     return (

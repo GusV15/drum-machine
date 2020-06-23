@@ -19,6 +19,7 @@ function App() {
   const [power, setPower] = useState(true);
   const [bank, setBank] = useState(0);
   const [text, setText] = useState("");
+  const [volume, setVolume] = useState(0.3);
 
   const handlePowerClick = () => {
     setPower(!power);
@@ -27,7 +28,9 @@ function App() {
   }
   const handleBankClick = () => {
     // +!1 == 0 y +!0 = 1
-    setBank(+!bank);
+    if(power) {
+      setBank(+!bank);
+    }
     setText(data[+!bank].title);
   }
 
@@ -38,11 +41,17 @@ function App() {
         power={power}
         text={text}
         setText={setText}
+        volume={volume}
+        setVolume={setVolume}
       />
       <Controllers
         data={data[bank]}
         power={power}
+        bank={bank}
         text={text}
+        setText={setText}
+        volume={volume}
+        setVolume={setVolume}
         handlePowerClick={handlePowerClick}
         handleBankClick={handleBankClick}
       />

@@ -29,7 +29,16 @@ const ControllerSyled = styled.div`
         height: 18px;
         background: blue;
         margin-top: 3px;
-        margin-left: 30px;
+        margin-left: ${({ power }) => (power ? "30px" : "3px")};
+        cursor: pointer;
+    }
+    .switch-bank {
+        position: absolute;
+        width: 22px;
+        height: 18px;
+        background: blue;
+        margin-top: 3px;
+        margin-left: ${({ bank }) => (bank ? "30px" : "3px")};
         cursor: pointer;
     }
     .drum-display {
@@ -60,12 +69,20 @@ const ControllerSyled = styled.div`
         cursor: pointer;
         -webkit-appearance: none;
     }
-
 `
-const Controllers = ({ power, handlePowerClick, handleBankClick, text }) => {
-    const disabled = power ? true : false;
+const Controllers = ({ power, bank, handlePowerClick, handleBankClick, text, setText, volume, setVolume }) => {
+    const handleChange = (e) => {
+        setVolume(e.target.value);
+        if(power){
+            setText(`Volume: ${Math.round(volume * 100)}`);
+            setTimeout(() => {
+                setText("");
+            }, 1000);
+        }
+    }
+
     return (
-        <ControllerSyled>
+        <ControllerSyled power={power} bank={bank}>
             <Header />
             <div className="drum-controllers">
                 <h2>Power</h2>
@@ -76,11 +93,11 @@ const Controllers = ({ power, handlePowerClick, handleBankClick, text }) => {
                     {text && power ? <p>{text}</p> : <p>{""}</p>}
                 </div>
                 <div className="drum-input">
-                    <input type="range" step="0.01" min="0" max="1" value="0.3" />
+                    <input type="range" step="0.01" min="0" max="1" value={volume} onClick={handleChange} onChange={handleChange} disabled={power ? false : true}/>
                 </div>
                 <h2>Bank</h2>
-                <div className="select-power" onClick={handleBankClick} disabled={disabled}>
-                    <div className="switch-power"></div>
+                <div className="select-power" onClick={handleBankClick}>
+                    <div className="switch-bank"></div>
                 </div>
             </div>
         </ControllerSyled>
