@@ -10,7 +10,7 @@ const ControllerSyled = styled.div`
     }
     h2 {
         font-size: 1em;
-        font-weight: 600;
+        font-weight: 500;
         margin: 0;
         margin-top: 20px;
         text-align: center;
@@ -53,10 +53,11 @@ const ControllerSyled = styled.div`
     input {
         -webkit-appearance: none;
         width: 245px;
-        height: 1.5px;
+        height: 2.5px;
         margin-left: 25px;
         background: #424242 !important;
-        border: 2px solid black !important;
+        border: 1px solid black !important;
+        box-shadow: 3px 3px 3px -1px #1C1C1C, 3px 3px 3px 0.5px #979797, 3px 3px 2px 0.5px #A6A6A6;
         outline: none;
     }
     input::-webkit-slider-thumb {

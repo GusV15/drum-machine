@@ -4,6 +4,7 @@ html, body {
   height: 100vh;
   margin: 0;
   padding: 0;
+  background-color: #8D8D8D;;
   font-family: 'Russo One', sans-serif;
   box-sizing: border-box;
   display: flex;
