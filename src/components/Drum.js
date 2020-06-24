@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import styled from 'styled-components';
+import { useDrum } from '../context/drum-context';
 
 const DrumStyled = styled.div`
     .container-drum {
@@ -27,7 +28,9 @@ const DrumStyled = styled.div`
     }    
 `
 
-const Drum = ({ keyCode, keyTrigger, id, url, power, setText, volume }) => {
+const Drum = ({ keyCode, keyTrigger, id, url }) => {
+
+    const { power ,setText, volume } = useDrum();
     const drum = useRef(null);
     const handleClick = (e) => {
         e.preventDefault();

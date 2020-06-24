@@ -12,7 +12,7 @@ const DisplayStyled = styled.div`
     align-content: center;
 `
 
-const Display = ({ data, power, text ,setText, volume }) => {
+const Display = ({ data }) => {
     return (
         <DisplayStyled>
             {data.map(drum => (
@@ -22,10 +22,6 @@ const Display = ({ data, power, text ,setText, volume }) => {
                     keyTrigger={drum.keyTrigger}
                     id={drum.id}
                     url={drum.url}
-                    power= {power}
-                    text={text}
-                    setText={setText}
-                    volume={volume}
                 />
             ))}
         </DisplayStyled>

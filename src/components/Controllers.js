@@ -1,4 +1,5 @@
 import React from 'react';
+import { useDrum } from '../context/drum-context';
 import styled from 'styled-components';
 import Header from './Header';
 
@@ -71,7 +72,8 @@ const ControllerSyled = styled.div`
         -webkit-appearance: none;
     }
 `
-const Controllers = ({ power, bank, handlePowerClick, handleBankClick, text, setText, volume, setVolume }) => {
+const Controllers = ({ handlePowerClick, handleBankClick }) => {
+    const { power, bank, text, setText, volume, setVolume } = useDrum();
     const handleChange = (e) => {
         setVolume(e.target.value);
         if(power){
