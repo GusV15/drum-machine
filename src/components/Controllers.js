@@ -87,7 +87,7 @@ const Controllers = ({ handlePowerClick, handleBankClick }) => {
     return (
         <ControllerSyled power={power} bank={bank}>
             <Header />
-            <div className="drum-controllers">
+            <section className="drum-controllers">
                 <h2>Power</h2>
                 <div className="select-power" onClick={handlePowerClick}>
                     <div className="switch-power"></div>
@@ -102,7 +102,7 @@ const Controllers = ({ handlePowerClick, handleBankClick }) => {
                 <div className="select-power" onClick={handleBankClick}>
                     <div className="switch-bank"></div>
                 </div>
-            </div>
+            </section>
         </ControllerSyled>
     )
 }
